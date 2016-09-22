@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create Event</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="jumbotron">
+      <h1>Bootstrap Tutorial</h1> 
+      <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
+        responsive, mobile-first projects on the web.</p> 
+    </div>
+  <div class="container" style="background-color:#264d00;">
+        <p align="right" style="color:white;">Hello, <strong>Chiew Hoon</strong>!</p>
+
+        <img src="../static/img/logo_mindef.png" alt="MINDEF logo" style="max-width:10%;">
+        <img src="../static/img/health-promotion-wellness.png"  class="img-rounded" alt="Health Promotion and Wellness" style="max-width:89%;">
+
+        <h1 style="color:white;">Create Event</h1>
+        <p style="color:white;">Please enter the event information below.</p> 
+        <br>
+
+        <form>
+          <div class="form-group">
+            <label for="event_name" style="color:white;">Event Name:</label>
+            <input type="text" class="form-control" id="event_name" placeholder="Event name">
+          </div>
+          <div class="form-group">
+            <label for="event_date" style="color:white;">Event Date:</label>
+            <input type="date" class="form-control" id="event_date">
+          </div>
+          <div class="form-group">
+            <label for="event_start_time" style="color:white;">Event Start Time:</label>
+            <input type="time" class="form-control" id="event_start_time">
+          </div>
+          <div class="form-group">
+            <label for="event_end_time" style="color:white;">Event End Time:</label>
+            <input type="time" class="form-control" id="event_end_time">
+          </div>
+          <div class="form-group">
+            <label for="event_loc" style="color:white;">Event Location:</label>
+            <input type="text" class="form-control" id="event_loc" placeholder="Where will the event be held?">
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label for="organizers" style="color:white;">Organizers:</label>
+            <input type="text" class="form-control" id="organizers" placeholder="Who is organizing the event?">
+          </div>
+          <div class="form-group">
+            <label for="event_type" style="color:white;">Event Type:</label>
+            <input type="text" class="form-control" id="event_type" placeholder="What kind of event is it? (Hint: Mass Exercise, Health Talk, etc.)">
+          </div>
+          <div class="form-group">
+            <label for="event_description" style="color:white;">Event Description:</label>
+            <textarea  class="form-control" rows="3" id="event_description" placeholder="More about the event..."></textarea>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label for="target_participants" style="color:white;">Target Participants:</label>
+            <input type="text" class="form-control" id="target_participants" placeholder="Who are expected to participate in the event?">
+          </div>
+          <div class="form-group">
+            <label for="event_masters" style="color:white;">Event Masters:</label>
+            <input type="text" class="form-control" id="event_masters" placeholder="Who is in charge of the event?">
+          </div>
+          <div class="form-group">
+            <label for="special_note" style="color:white;">Special Notes:</label>
+            <input type="text" class="form-control" id="event_masters" placeholder="Anything else you want to note down?">
+          </div>
+          <br>
+
+          <button type="submit" class="btn btn-default">Save</button>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      <br>
+    </div>
+
+
+
+  </body>
+  </html>

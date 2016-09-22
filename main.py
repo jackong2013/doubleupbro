@@ -3,11 +3,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return render_template('home.html')
+    return render_template('create_event.html')
 
-@app.route("/second_page")
+@app.route("/graph")
 def second_page():
-	return "you are at second page"
+	return render_template('graph.html')
 
 if __name__ == "__main__":
     app.run()
