@@ -5,9 +5,9 @@ app = Flask(__name__)
 def hello():
     return render_template('create_event.html')
 
-@app.route("/graph")
+@app.route("/fatty")
 def second_page():
-	return render_template('graph.html')
+	return render_template('fatty.html')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)

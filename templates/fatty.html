@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+</head>
+<body>
+    <div class="container" style="background:#d9d9d9;">
+        <p align="right" style="color:#e60000;">Hello, <strong>Chiew Hoon</strong>!</p>
+
+        <img src="../static/img/logo_mindef.png" alt="MINDEF logo" style="margin: auto;display: block;">
+        <img src="../static/img/create_event_header.png"  class="img-rounded" alt="Health Promotion and Wellness" style="max-width:90%;margin: auto;display: block;">
+        <br>
+
+        <div class='content'>
+            <h1>Double Up, Bro!</h1>
+            <br>
+            <div class="row">
+                <div class="col-sm-4 left">
+                    <img src="../static/img/fatty_dp.png" class="img-rounded">
+                    <br>
+                    <div class="user_info">
+                        <h3>Fatty Francis</h3>
+                        <p>
+                            Age: 18 <br>
+                            Unit: idk <br>
+                            Gender: Male <br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-sm-8">
+                    <div>
+                        <p style="font-size:16px">You have completed <b>Exercise A</b>! Good job! Here is your performance on this exercise.</p>
+                        <div class='perf'>
+                            <p>
+                                Distance: 2.7km <br>
+                                Time taken: 13 mins 28 secs <br>
+                                Calories burnt: 340 cal
+                            </p>
+                        </div>
+                    </div>
+                    <br>
+                    <canvas id="myChart" height="70" width="100"></canvas>
+                    <br>
+                    <div>
+                        <p style="font-size:16px">You performed better than 43% of those who completed this exercise!</p>
+                        <div class='perf'>
+                            <p>
+                                Group average time taken: 12 mins 47 secs <br>
+                                Average calories burnt: 370 cal <br>
+                                Best timing: 9 mins 58 secs
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <br>
+    </div>
+
+
+
+    <script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["<10 mins", "10-11 mins", "11-12 mins", "12 - 13 mins", "13 - 14 mins", "14 - 15 mins", ">15 mins"],
+            datasets: [
+                {
+                    type: 'line',
+                    label: "number of people within a performance group",
+                    fill: false,
+                    lineTension: 0.1,
+                    backgroundColor: "rgba(75,192,192,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [1, 6, 10, 14, 19, 23, 15],
+                    spanGaps: false
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'How did you perform among your peers?'
+            },
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "time taken"
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Number of people"
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+</body>
