@@ -29,7 +29,7 @@ def fatty_stats():
 
 @app.route("/commander")
 def commander_view():
-	return render_template('commander')
+	return render_template('commander.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
