@@ -3,7 +3,6 @@ h1 {
 }
 
 .content {
-<<<<<<< HEAD
 	border-radius: 5px; 
 	background-color:#FFFFFF; 
 	padding: 20px;
@@ -37,5 +36,9 @@ h1 {
 .cell {
 	background-color:#E3F2FD;
 	padding: 20px;
-	border-radius: 5px; 
+	border-radius: 3px; 
+}
+
+.row {
+	margin-top: 20px;
 }

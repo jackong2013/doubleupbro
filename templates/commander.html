@@ -9,6 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body>
     <div class="container" style="background:#d9d9d9;">
@@ -32,11 +34,44 @@
                             Worst peformance: 17 mins 24 secs by <a href="#">CMI</a>
                         </p>
                     </div>
+                    <br>
+                    <div class="cell">
+                        <h4>These people need more help!</h4>
+                        <p>
+                            <a href="#">CMI</a> <br>
+                            <a href="#">CMI 2</a> <br>
+                            <a href="#">CMI 3</a> <br>
+                            <a href="#">CMI 4</a> <br>
+                            <a href="#">CMI 5</a> <br>
+                            <a href="#">CMI 6</a> <br>
+                            <a href="#">CMI 7</a>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="col-sm-7">
                     <div class="cell">
-                        <canvas id="demographicsChart" height="70" width="100"></canvas>
+                        <canvas id="demographicsChart" height="65" width="100"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class='cell'>
+                        <canvas id="performanceChart" height="70" width="100"></canvas>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="cell">
+                        <canvas id="passFailChart" height="104" width="100"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="cell">
+                        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                     </div>
                 </div>
             </div>
@@ -47,31 +82,155 @@
 
 
     <script>
-    var ctx = document.getElementById("demographicsChart");
-    var myChart = new Chart(ctx, {
+    var ctx_a = document.getElementById("demographicsChart");
+    var myChartA = new Chart(ctx_a, {
         type: 'pie',
         data: {
-            labels: ["Red", "Blue", "Yellow"],
+            labels: ["Underweight", "Normal", "Overweight", "Obese"],
             datasets: [{
-                data: [300, 50, 100],
+                data: [3, 11, 58, 16],
                 backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
+                    "#64B5F6",
+                    "#81C784",
+                    "#FFB74D",
+                    "#E57373"
                 ],
                 hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
+                    "#64B5F6",
+                    "#81C784",
+                    "#FFB74D",
+                    "#E57373"
                 ]
             }]
         },
         options: {
             title: {
                 display: true,
-                text: ''
+                text: 'Participants BMI distribution',
+                fontSize: 15
             }
         }
+    });
+
+    var ctx_b = document.getElementById("performanceChart");
+    var myChartB = new Chart(ctx_b, {
+        type: 'line',
+        data: {
+            labels: ["<10 mins", "10-11 mins", "11-12 mins", "12 - 13 mins", "13 - 14 mins", "14 - 15 mins", ">15 mins"],
+            datasets: [
+                {
+                    type: 'line',
+                    label: "number of people within a performance group",
+                    fill: false,
+                    lineTension: 0.1,
+                    backgroundColor: "rgba(75,192,192,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [1, 6, 10, 14, 19, 23, 15],
+                    spanGaps: false
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'How did everyone perform?',
+                fontSize: 15
+            },
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "time taken"
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Number of people"
+                    }
+                }]
+            }
+        }
+    });
+
+    var ctx_c = document.getElementById("passFailChart");
+    var myChartC = new Chart(ctx_c, {
+        type: 'pie',
+        data: {
+            labels: ["Pass", "Fail"],
+            datasets: [{
+                data: [18, 70],
+                backgroundColor: [
+                    "#81C784",
+                    "#E57373"
+                ],
+                hoverBackgroundColor: [
+                    "#81C784",
+                    "#E57373"
+                ]
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Pass-fail percentage',
+                fontSize: 15
+            }
+        }
+    });
+    </script>
+
+    <script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Pass-fail percentage based on BMI group'
+            },
+            xAxis: {
+                categories: ["Underweight", "Normal", "Overweight", "Obese"]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Pass-fail percentage'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'Pass',
+                data: [2, 9, 46, 15]
+            }, {
+                name: 'Fail',
+                data: [1, 2, 12, 1]
+            }]
+        });
     });
     </script>
 </body>
