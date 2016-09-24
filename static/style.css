@@ -3,10 +3,10 @@ h1 {
 }
 
 .content {
-	border-radius: 5px; 
-	background-color:#FFFFFF; 
-	padding: 20px; 
-	max-width:90%; 
+	border-radius: 5px;
+	background-color:#FFFFFF;
+	padding: 20px;
+	max-width:90%;
 	margin: auto;display: block;
 }
 
@@ -14,6 +14,7 @@ h1 {
     max-height:80%;
     max-width:70%;
 }
+
 
 .user_info {
 	margin-left: 20px;
