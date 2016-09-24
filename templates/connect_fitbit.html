@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+</head>
+<body>
+    <div class="container" style="background:#d9d9d9;">
+        <p align="right" style="color:#e60000;">Hello, <strong>Chiew Hoon</strong>!</p>
+
+        <img src="../static/img/logo_mindef.png" alt="MINDEF logo" style="margin: auto;display: block;">
+        <img src="../static/img/create_event_header.png"  class="img-rounded" alt="Health Promotion and Wellness" style="max-width:90%;margin: auto;display: block;">
+        <br>
+
+        <div class='content'>
+            <h1>Double Up, Bro!</h1>
+            <a href="{{ url_for('connect_attempt') }}" role="button" class="btn btn-primary btn-lg">Connect to your fitbit now!</a>
+        </div> 
+        <br>
+    </div>
+</body>
