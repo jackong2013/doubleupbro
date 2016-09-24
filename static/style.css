@@ -3,6 +3,7 @@ h1 {
 }
 
 .content {
+<<<<<<< HEAD
 	border-radius: 5px; 
 	background-color:#FFFFFF; 
 	padding: 20px;
@@ -15,6 +16,7 @@ h1 {
     max-height:80%;
     max-width:70%;
 }
+
 
 .user_info {
 	margin-left: 20px;
