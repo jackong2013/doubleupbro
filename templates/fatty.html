@@ -9,6 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body>
     <div class="container" style="background:#d9d9d9;">
@@ -53,7 +55,7 @@
                             </p>
                         </div>
                     </div>
-                    <canvas id="myChart" height="70" width="100"></canvas>
+                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                     <br>
                     <div class= "round", style="background-color:#e6e6ff; padding: 10px; max-width:100%; margin:right; display:block;">
 												<p style="font-size:25px; color: #0059b3;">Summary:</p>
@@ -68,6 +70,13 @@
                     </div>
                 </div>
             </div>
+            <div class="row" style="padding=20px;margin=20px">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 cell" style="margin=20px">
+                    <canvas id="mySteps" height="50" width="100"></canvas>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
         </div>
         <br>
     </div>
@@ -75,15 +84,61 @@
 
 
     <script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
+    $(function () {
+        $('#container').highcharts({
+            title: {
+                text: 'How did you perform among your peers?',
+                x: -20 //center
+            },
+            xAxis: {
+                title: {
+                    text: 'Time taken'
+                },
+                categories: ["<10 mins", "10-11 mins", "11-12 mins", "12 - 13 mins", "13 - 14 mins", "14 - 15 mins", ">15 mins"],
+                plotLines: [{
+                    label: {
+                        text: 'where you are'
+                    },
+                    color: 'red',
+                    value: 4,
+                    width: 2
+                }, {
+                    label: {
+                        text: 'cohort average'
+                    },
+                    color: 'blue',
+                    value: 3,
+                    width: 2
+                }]
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of people'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                data: [1, 6, 10, 14, 19, 23, 15]
+            }]
+        });
+    });
+
+    var ctx2 = document.getElementById("mySteps");
+    var myChart2 = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ["<10 mins", "10-11 mins", "11-12 mins", "12 - 13 mins", "13 - 14 mins", "14 - 15 mins", ">15 mins"],
+            labels: {{ days|safe }},
             datasets: [
                 {
                     type: 'line',
-                    label: "number of people within a performance group",
+                    label: "number of steps taken",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: "rgba(75,192,192,0.4)",
@@ -101,7 +156,7 @@
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [1, 6, 10, 14, 19, 23, 15],
+                    data: {{ steps|safe }},
                     spanGaps: false
                 }
             ]
@@ -109,8 +164,8 @@
         options: {
             title: {
                 display: true,
-                text: 'How did you perform among your peers?',
-                fontSize: 15
+                text: 'number of steps you have taken daily',
+                fontSize: 20
             },
             legend: {
                 display: false
@@ -119,13 +174,13 @@
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: "time taken"
+                        labelString: "date"
                     }
                 }],
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: "Number of people"
+                        labelString: "Number of steps"
                     }
                 }]
             }
