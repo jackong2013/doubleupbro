@@ -36,17 +36,16 @@ def receive_fitbit():
 	return redirect(url_for('fatty_stats'))
 
 
-@app.route("/fatty")
+@app.route("/francis")
 def fatty_stats():
 	daily_data = get_daily(FITBIT_ACCESS_TOKEN, FITBIT_REFRESH_TOKEN)
 	total_data = get_total(FITBIT_ACCESS_TOKEN, FITBIT_REFRESH_TOKEN)
 	num_steps = []
 	for item in daily_data['activities-steps']:
 		num_steps.append([item['dateTime'], item['value']])
-	pp.pprint(num_steps)
 	days = list(map(lambda x: x[0], num_steps))
 	steps = list(map(lambda x: int(x[1]), num_steps))
-	return render_template('fatty.html', days=json.dumps(days), steps=json.dumps(steps))
+	return render_template('francis.html', days=json.dumps(days), steps=json.dumps(steps))
 
 @app.route("/commander")
 def commander_view():
